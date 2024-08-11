@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('Layouts/header', { title: 'Appointment' }); %>
+
+    <style>
+        body {
+            height: 100%;
+        }
+
+        h3 {
+            margin-bottom: 70px;
+        }
+
+        .alert {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .form-control {
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .appointments-list {
+            margin-top: 20px;
+        }
+
+        .appointment-item {
+            padding: 10px;
+            border: 1px solid #ccc;
+            margin-bottom: 5px;
+            border-radius: 5px;
+        }
+    </style>
+
+<body>
+    <%- include('Layouts/nav'); %>
+    <section class="center-content text-bg-light p-3 h-100" id="height">
+        <h3><strong>Welcome Admin :) Add the slots for the drivers</strong></h3>
+        <% if (message) { %>
+            <div class="alert alert-info" id="message">
+                <%= message %>
+            </div>
+        <% } %>
+        <form action="/createAppointment" method="POST">
+            <div class="form-group">
+                <label for="date" class="form-label">Date</label>
+                <input type="date" id="date" name="date" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="time" class="form-label">Time</label>
+                <input type="time" id="time" name="time" class="form-control" required>
+            </div>
+            <div class="form-group mt-3">
+                <button type="submit" class="btn btn-primary">Add Appointment</button>
+            </div>
+        </form>
+
+        <div class="appointments-list">
+            <h4>Existing Appointments:</h4>
+            <% if (appointments.length > 0) { %>
+                <% appointments.forEach(appointment => { %>
+                    <div class="appointment-item" style="background-color: gray;">
+                        <strong>Date:</strong> <%= appointment.date.toISOString().split("T")[0] %> 
+                        <strong>Time:</strong> <%= appointment.time %>
+                    </div>
+                <% }) %>
+            <% } else { %>
+                <p>No appointments available.</p>
+            <% } %>
+        </div>
+    </section>
+    <%- include('Layouts/footer'); %>
+    <%- include('Layouts/script'); %>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const messageElement = document.getElementById('message');
+            if (messageElement) {
+                messageElement.style.display = 'block';
+                setTimeout(() => {
+                    messageElement.style.opacity = 1;
+                    (function fade() {
+                        if ((messageElement.style.opacity -= 0.1) < 0) {
+                            messageElement.style.display = 'none';
+                        } else {
+                            setTimeout(fade, 50);
+                        }
+                    })();
+                }, 2000);
+            }
+        });
+    </script>
+</body>
+</html>

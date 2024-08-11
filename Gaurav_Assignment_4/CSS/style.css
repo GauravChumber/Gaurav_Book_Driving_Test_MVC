@@ -1,0 +1,83 @@
+html
+{
+    height: 100%;
+}
+
+.navbar-brand {
+    text-decoration: none;
+    font-family: American Typewriter, serif;
+    transition: 0.5s;
+    color: white;
+}
+.navbar ul {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    list-style: none;
+}
+
+
+.navbar-brand:hover {
+    color: rgb(220, 59, 59);
+}
+
+.btncolor{
+    background-color: red;
+}
+.btn{
+    background-color: blue;
+}
+#content-title {
+    font-size: 55px;
+}
+
+.center-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#form_container {
+    width: 80%;
+    transition: 1s;
+}
+
+#navlink {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+section#gMaps {
+    min-height: 100vh;
+    height: auto;
+    padding-bottom: 20px;
+}
+
+.form-label,
+#content-title {
+    font-family: Arial, sans-serif;
+  }
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    height: 40%;
+    width: 100%;
+}
+
+.navbar{
+    background-color: #444;
+    color: white;
+}
+
+.banner-fixed {
+    text-align: center;
+    display: block;
+    color: white;
+    background-color: #444;
+    padding: 20px;
+    height: 150px;
+}

@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+        <a class="navbar-brand" id="navlink" href="/">Book DriveTest</a>
+        <ul class="navbar-nav ms-auto">
+            <% if (locals.user && user.userType === 'Driver') { %>
+                <li class="nav-item">
+                    <a class="navbar-brand" href="/dashboard">DASHBOARD</a>
+                </li>
+                <li class="nav-item">
+                    <a class="navbar-brand" href="/g2">G2_TEST</a>
+                </li>
+                <li class="nav-item">
+                    <a class="navbar-brand" href="/g">G_TEST</a>
+                </li>
+                <li class="nav-item">
+                    <a class="navbar-brand" href="/logout">LOGOUT</a>
+                </li>
+            <% } else if (locals.user && user.userType === 'Admin') { %>
+                <li class="nav-item">
+                    <a class="navbar-brand" href="/dashboard">DASHBOARD</a>
+                </li>
+                <li class="nav-item">
+                    <a class="navbar-brand" href="/appointment">APPOINTMENT</a>
+                </li>
+                <li class="nav-item">
+                    <a class="navbar-brand" href="/logout">LOGOUT</a>
+                </li>
+            <% } else if (locals.user) { %>
+                <li class="nav-item">
+                    <a class="navbar-brand" href="/dashboard">DASHBOARD</a>
+                </li>
+                <li class="nav-item">
+                    <a class="navbar-brand" href="/logout">LOGOUT</a>
+                </li>
+            <% } else { %>
+                <li class="nav-item">
+                    <a class="navbar-brand" href="/login">LOGIN</a>
+                </li>
+            <% } %>
+        </ul>
+    </div>
+</nav>
+
